@@ -2,7 +2,7 @@
 
 This project is a recipe searching application called Forkify. It is part of the JavaScript bootcamp course offered by Jonas Schemedtman on Udemy. Forkify allows users to search for recipes, view detailed information about each recipe, and save their favorite recipes for later.
 
-![Forkify Screenshot](screenshot.png)
+![Forkify Screenshot](Forkify-screenshot.png)
 
 ## Features
 
