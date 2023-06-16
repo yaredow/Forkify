@@ -1,24 +1,8 @@
 import icons from 'url:../../img/icons.svg';
-/*
-Notes: 
-- for each view subclass :
-  - there's different [(parentElement) and (errorMessage)] private-properties
-  - there is a different (generateMarkup()) private-method
-*/
-
 // here we export the class itself as we arn't going to create instancses from it
 export default class View {
   _data;
 
-  // DOCUMENTATION
-  /**
-   * Render the received object to the DOM
-   * @param {Object | Object[]} data The data to be rendered (e.g. recipe)
-   * @param {boolean} [render=true] If false, create markup string instead of rendering to the DOM
-   * @returns {undefined | string} A markup string is returned if render=false
-   * @this {Object} View instance
-   * @author Ahmed Alam El-Deen
-   */
   render(data, render = true) {
     // Gaurd claus : if (no data) or (data is an empty array) => render error message from error-function
     if (!data || (Array.isArray(data) && data.length === 0))
@@ -64,7 +48,7 @@ export default class View {
       }
       // Updates changed ATTRIBUES not just textContent
       if (!newElement.isEqualNode(currentElement)) {
-        Array.from(newElement.attributes).forEach(attr => {
+        Array.from(newElement.attributes).forEach((attr) => {
           currentElement.setAttribute(attr.name, attr.value);
         });
       }
