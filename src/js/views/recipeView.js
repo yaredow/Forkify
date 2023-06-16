@@ -1,6 +1,6 @@
 import View from './View.js';
 import icons from 'url:../../img/icons.svg';
-import { Fraction } from 'fractional'; // library used to convert numbers to fractions ( 0.5 => 1/2 )
+import fracty from 'fracty';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
@@ -12,7 +12,9 @@ class RecipeView extends View {
   addHandlerRender(handler) {
     // "hashchange" is an event when clicking on a link so the hash changes
     // "load" is an event so that the recipe shows automatically when loading the page without selecting a recipe again
-    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+    ['hashchange', 'load'].forEach((ev) =>
+      window.addEventListener(ev, handler)
+    );
   }
 
   // pub/sub pattern
@@ -137,7 +139,7 @@ class RecipeView extends View {
       </svg>
       <div class="recipe__quantity">${
         // using fractional library guides from documentation
-        ing.quantity ? new Fraction(ing.quantity).toString() : ''
+        ing.quantity ? new fracty(ing.quantity).toString() : ''
         // we used ternary operator as if value was null => "fractional library" will return NaN
       }</div>
       <div class="recipe__description">

@@ -10,9 +10,9 @@ class PaginationView extends View {
       // Event Delegation
       const btn = e.target.closest('.btn--inline');
       if (!btn) return;
-
       // getting the page number from the data-attribute in the html code
       const goToPage = Number(btn.dataset.goto);
+      // using (+) to convert it to a number
 
       //pub/sub pattern
       handler(goToPage);
@@ -48,9 +48,11 @@ class PaginationView extends View {
   }
 
   _generateMarkup() {
+    // remember => (this.data) is the argument passed through the render method => here it's : (model.state.search)
+
     const curPage = this._data.page;
     const numPages = Math.ceil(
-      this._data.results.length / this._data.resultsPerPage
+      this._data.results.length / this._data.resultsPerPage //ex: number-of-pages = (50 pages / 10) = 5 pages
     );
     // senario-1 : Page 1, and there are other pages
     if (curPage === 1 && numPages > 1) {
@@ -82,6 +84,7 @@ class PaginationView extends View {
       </button>
       `;
     }
+    // // senario-4 : Page 1, and there are NO other pages
     return '';
   }
 }
